@@ -7,7 +7,7 @@ This is important because z80 support has still few bugs, and it is important to
 in order to not use the buggy functionnalities/instructions or to patch and correct vasm.
 
 The script read source files from these folders:
- - **good* Good folder must contains asm source files supposed to be correctly assembled with a bug free assembler
+ - **good** Good folder must contains asm source files supposed to be correctly assembled with a bug free assembler
  - **bad** Bad folder must contains asm source files supposed to raise errors with a bug free assembler
 
 If the name of one file z80 contains the string *_alone*, each line is assembled individually instead of assembling the file as a whole.
