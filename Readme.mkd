@@ -1,15 +1,16 @@
 #vasm_z80_oldstyle_eval
 
 The aim of this project is to automatically evaluate
-vasm assembler compiled with z80 support and oldstyle syntax
+vasm assembler compiled with **z80** support and **oldstyle** syntax
 in order to test regressions.
-z80 support is a bit buggy atm, so it is important to know where it fails
+This is important because z80 support has still few bugs, and it is important to know where it fails
+in order to not use the buggy functionnalities/instructions or to patch and correct vasm.
 
- - Good folder must contains asm source files supposed to be correctly assembled
- - Bad folder must contains asm source files supposed to raise errors
+The script read source files from these folders:
+ - **good* Good folder must contains asm source files supposed to be correctly assembled with a bug free assembler
+ - **bad** Bad folder must contains asm source files supposed to raise errors with a bug free assembler
 
-If the name of one file contains '_alone', the file is assembled line per line
-
+If the name of one file z80 contains the string *_alone*, each line is assembled individually instead of assembling the file as a whole.
 
 
 Feel free to add extra test cases, and to patch vasm (http://sun.hasenbraten.de/vasm/)
