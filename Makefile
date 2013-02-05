@@ -18,4 +18,4 @@ test_public:
 update_current_state:
 	$(MAKE) test_public
 	git add current_state.txt
-	git commit -m "Update log results with current vasm version"
+	-git commit -m "Update log results with current vasm version"
