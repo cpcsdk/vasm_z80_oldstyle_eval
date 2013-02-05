@@ -13,6 +13,7 @@ test_public:
 	rm vasm.tar.gz
 	cd vasm && make CPU=z80 SYNTAX=oldstyle
 	python vasm_eval.py vasm/vasmz80_oldstyle | tee current_state.txt
+	rm -rf vasm
 
 
 update_current_state:
