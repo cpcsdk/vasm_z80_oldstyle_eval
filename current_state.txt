@@ -1,0 +1,60 @@
+.*.********........********
+10/27 successes of tests.
+
+Source: ./good/high.asm
+Failed instead of succeeded
+Message: 
+error 48 in line 30 of "./good/high.asm": assertion "PFO100_try2 == 0x12" failed: 
+>    assert PFO100_try2 == 0x12
+
+error 48 in line 33 of "./good/high.asm": assertion "PFO100_try2+NBR_REG  == 0x12+13" failed: 
+>    assert PFO100_try2+NBR_REG  == 0x12+13
+
+
+Source:     ld ixl, iyl
+Succeeded instead of failed
+
+Source:     ld ixl, iyh
+Succeeded instead of failed
+
+Source:     ld ixh, iyl
+Succeeded instead of failed
+
+Source:     ld ixh, iyh
+Succeeded instead of failed
+
+Source:     ld iyl, ixl
+Succeeded instead of failed
+
+Source:     ld iyl, ixh
+Succeeded instead of failed
+
+Source:     ld iyh, ixl
+Succeeded instead of failed
+
+Source:     ld iyh, ixh
+Succeeded instead of failed
+
+Source:     ld iyl, (ix+0)
+Succeeded instead of failed
+
+Source:     ld iyh, (ix+0)
+Succeeded instead of failed
+
+Source:     ld ixh, (ix+0)
+Succeeded instead of failed
+
+Source:     ld ixh, (ix+0)
+Succeeded instead of failed
+
+Source:     ld iyl, (iy+0)
+Succeeded instead of failed
+
+Source:     ld iyh, (iy+0)
+Succeeded instead of failed
+
+Source:     ld ixh, (iy+0)
+Succeeded instead of failed
+
+Source:     ld ixh, (iy+0)
+Succeeded instead of failed
