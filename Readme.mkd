@@ -9,7 +9,7 @@ in order to not use the buggy functionnalities/instructions or to patch and corr
 The script read source files from these folders:
  - **good** Good folder must contains asm source files supposed to be correctly assembled with a bug free assembler
  - **bad** Bad folder must contains asm source files supposed to raise errors with a bug free assembler
-
+ - **equiv** Contain asm source file read by pair of lines. Each line of the couple must be assembled exactly in the same way
 If the name of one file z80 contains the string *_alone*, each line is assembled individually instead of assembling the file as a whole.
 
 
