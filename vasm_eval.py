@@ -5,6 +5,7 @@
 
 Verifies that vasm fails to assemble wrong instructions.
 TODO allow to verify if the generated output is correct
+BUG does not work on windows
 """
 
 # imports
@@ -27,7 +28,7 @@ def verify_equality(vasm, fname):
     """Verify the equality of each couple.
     Each line is supposed to be assembled correctly.
     """
-    
+
     previous_binary = previous_line = None
     successes = []
 
@@ -37,7 +38,7 @@ def verify_equality(vasm, fname):
         striped = current_line.strip()
         if (not len(striped)) or striped[0] == COMMENT_CHAR:
             continue
-    
+
         # Create the file
         d = open(fnamed, 'w') #TODO use temporary generated file
         d.write(current_line)
@@ -58,7 +59,7 @@ def verify_equality(vasm, fname):
         else:
             if previous_binary != current_binary:
                 sys.stdout.write('*')
-                repres = "%s => %s\nand\n%s => %s" % (previous_line.strip(), 
+                repres = "%s => %s\nand\n%s => %s" % (previous_line.strip(),
                                                 ",".join("0x%.2X"%ord(_) for _ in previous_binary),
                                                 current_line.strip(),
                                                 ",".join("0x%.2X"%ord(_) for _ in current_binary),
@@ -70,7 +71,7 @@ def verify_equality(vasm, fname):
                 successes.append(1)
             previous_binary = previous_line = None
 
-        
+
     f.close()
     return successes
 
@@ -116,7 +117,7 @@ def __assemble(vasm, fname, success=True, content=None):
 
 def main():
     """Launch all the tests"""
-    
+
     try:
         vasm = sys.argv[1]
     except:
@@ -128,28 +129,31 @@ def main():
     bad_files = sorted(glob.glob('./bad/*.asm'))
     equiv_files = sorted(glob.glob('./equiv/*.asm'))
 
+    sys.stdout.write('Launch tests on:')
     for fname in good_files:
+        sys.stdout.write('\n[G] %s '% fname)
         successes.extend(assemble(vasm, fname, True))
 
     for fname in bad_files:
+        sys.stdout.write('\n[B] %s '% fname)
         successes.extend(assemble(vasm, fname, False))
 
     for fname in equiv_files:
+        sys.stdout.write('\n[E] %s '% fname)
         successes.extend(verify_equality(vasm, fname))
 
-    print
-    print '%d/%d successes of tests.' % (sum(successes), len(successes))
+    sys.stdout.write('\n\nSummary: %d/%d successes of tests.\n\nList of errors:' % (sum(successes), len(successes)))
     for error in errors:
         print '\n>> Source:',error[1]
         if error[0] == ERROR_FAILED:
             print '\tFailed instead of succeeded'
-            print '\tMessage:',error[2] 
+            print '\tMessage:',error[2]
         elif error[0] == ERROR_SUCCESS:
             print '\tSucceeded instead of failed'
         else:
             print '\tInstruction assembled differently'
             print '\tMessage:\n', error[2]
-                                    
+
 
 if __name__ == '__main__':
     main()

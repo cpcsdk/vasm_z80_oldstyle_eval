@@ -1,19 +1,24 @@
-.*...........................o..*
-27/29 successes of tests.
+.*.................****..................................................o..o..o..o..o..o..o..o..o..o
+76/81 successes of tests.
 
 >> Source: ./good/high.asm
 	Failed instead of succeeded
 	Message: 
-error 48 in line 30 of "./good/high.asm": assertion "PFO100_try2 == 0x12" failed: 
+error 48 in line 31 of "./good/high.asm": assertion "PFO100_try2 == 0x12" failed: 
 >    assert PFO100_try2 == 0x12
 
-error 48 in line 33 of "./good/high.asm": assertion "PFO100_try2+NBR_REG  == 0x12+13" failed: 
+error 48 in line 34 of "./good/high.asm": assertion "PFO100_try2+NBR_REG  == 0x12+13" failed: 
 >    assert PFO100_try2+NBR_REG  == 0x12+13
 
 
->> Source: ./equiv/indir.asm
-	Instruction assembled differently
-	Message:
-ld bc, (10+2)*3 => 0xED,0x4B,0x0C,0x00
-and
-ld bc, 3*(10+2) => 0x01,0x24,0x00
+>> Source:     ld ixh, (hl)
+	Succeeded instead of failed
+
+>> Source:     ld ixl, (hl)
+	Succeeded instead of failed
+
+>> Source:     ld iyh, (hl)
+	Succeeded instead of failed
+
+>> Source:     ld iyl, (hl)
+	Succeeded instead of failed

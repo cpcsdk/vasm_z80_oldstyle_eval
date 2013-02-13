@@ -433,7 +433,7 @@ l1	djnz l1
 	ld i,a
 
 	ld a,r
-    ld r,a
+	ld r,a
     
 	ld bc,(nn)
 	ld de,(nn)

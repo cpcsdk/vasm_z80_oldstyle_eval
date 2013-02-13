@@ -1,3 +1,4 @@
+  LIST
   org 0x1234
 
 VAR1 equ 0x1234
