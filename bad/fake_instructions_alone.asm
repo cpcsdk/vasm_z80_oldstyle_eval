@@ -60,7 +60,6 @@
     and (bc)
     and (de)
     and (sp)
-;    and ($12)
     and ($12)
     and ($0012)
     and ($1234)
