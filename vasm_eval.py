@@ -86,7 +86,7 @@ def assemble(vasm, fname, success=True):
         f = open(fname)
         for line in f.readlines():
             # skip empty lines
-            if not len(line.strip()):
+            if (not len(line.strip())) or line.strip()[0] == COMMENT_CHAR:
                 continue
             # create file
             d = open(fnamed, 'w') #TODO use temporary generated file

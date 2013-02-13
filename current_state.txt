@@ -1,6 +1,16 @@
-.*.................****..................................................o..o..o..o..o..o..o..o..o..o
-76/81 successes of tests.
+Launch tests on:
+[G] ./good/all.asm .
+[G] ./good/h.asm .
+[G] ./good/high.asm *
+[G] ./good/struct.asm .
+[B] ./bad/fake_instructions_alone.asm ......**.*..*..........................................**.....................................
+[B] ./bad/ixiy_alone.asm ................****
+[B] ./bad/sixteenbitop_alone.asm ...............................................
+[E] ./equiv/indir.asm ..o..o..o..o..o..o..o..o..o..o
 
+Summary: 164/175 successes of tests.
+
+List of errors:
 >> Source: ./good/high.asm
 	Failed instead of succeeded
 	Message: 
@@ -10,6 +20,24 @@ error 48 in line 31 of "./good/high.asm": assertion "PFO100_try2 == 0x12" failed
 error 48 in line 34 of "./good/high.asm": assertion "PFO100_try2+NBR_REG  == 0x12+13" failed: 
 >    assert PFO100_try2+NBR_REG  == 0x12+13
 
+
+>> Source:     ld (hl),($10)
+	Succeeded instead of failed
+
+>> Source:     ld (hl),($1000)
+	Succeeded instead of failed
+
+>> Source:     ld ($10),(hl)
+	Succeeded instead of failed
+
+>> Source:     ld (ix + 0),($10)
+	Succeeded instead of failed
+
+>> Source:     and ($12)
+	Succeeded instead of failed
+
+>> Source:     and ($0012)
+	Succeeded instead of failed
 
 >> Source:     ld ixh, (hl)
 	Succeeded instead of failed
