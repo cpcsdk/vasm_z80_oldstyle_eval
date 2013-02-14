@@ -1,6 +1,5 @@
 Launch tests on:
 [G] ./good/all.asm .
-[G] ./good/h.asm .
 [G] ./good/high.asm *
 [G] ./good/struct.asm .
 [B] ./bad/fake_instructions_alone.asm ......**.*..*..........................................**.....................................
@@ -8,7 +7,7 @@ Launch tests on:
 [B] ./bad/sixteenbitop_alone.asm ...............................................
 [E] ./equiv/indir.asm ..o..o..o..o..o..o..o..o..o..o
 
-Summary: 164/175 successes of tests.
+Summary: 163/174 successes of tests.
 
 List of errors:
 >> Source: ./good/high.asm
