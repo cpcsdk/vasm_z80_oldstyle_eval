@@ -8,7 +8,7 @@ in order to not use the buggy functionnalities/instructions or to patch and corr
 
 The script read source files from these folders:
  - **good** Good folder must contains asm source files supposed to be correctly assembled with a bug free assembler.
- You can optionaly put a _<filename>.bin_ binary file which will be compared to what vasm produces. 
+ You can optionaly put a \<filename\>.bin_ binary file which will be compared to what vasm produces. 
  When there are no bugs the output of vasm (with -Fbin) must be similar to this file.
  - **bad** Bad folder must contains asm source files supposed to raise errors with a bug free assembler
  - **equiv** Contain asm source file read by pair of lines. Each line of the couple must be assembled exactly in the same way.
