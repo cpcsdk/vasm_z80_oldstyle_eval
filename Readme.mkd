@@ -1,16 +1,20 @@
 #vasm_z80_oldstyle_eval
 
 The aim of this project is to automatically evaluate
-vasm assembler compiled with **z80** support and **oldstyle** syntax
+(vasm)[http://sun.hasenbraten.de/vasm/] assembler compiled with **z80** support and **oldstyle** syntax
 in order to test regressions.
 This is important because z80 support has still few bugs, and it is important to know where it fails
 in order to not use the buggy functionnalities/instructions or to patch and correct vasm.
 
 The script read source files from these folders:
- - **good** Good folder must contains asm source files supposed to be correctly assembled with a bug free assembler
+ - **good** Good folder must contains asm source files supposed to be correctly assembled with a bug free assembler.
+ You can optionaly put a _<filename>.bin_ binary file which will be compared to what vasm produces. 
+ When there are no bugs the output of vasm (with -Fbin) must be similar to this file.
  - **bad** Bad folder must contains asm source files supposed to raise errors with a bug free assembler
- - **equiv** Contain asm source file read by pair of lines. Each line of the couple must be assembled exactly in the same way
-If the name of one file z80 contains the string *_alone*, each line is assembled individually instead of assembling the file as a whole.
+ - **equiv** Contain asm source file read by pair of lines. Each line of the couple must be assembled exactly in the same way.
+
+If the name of one asm file contains the string *_alone*, the each line is assembled individually instead of assembling the file as a whole.
 
 
-Feel free to add extra test cases, and to patch vasm (http://sun.hasenbraten.de/vasm/)
+Feel free to add extra test cases, and to patch vasm (http://sun.hasenbraten.de/vasm/).
+There are no modifications to do if you want to test other flavors of vasm.
