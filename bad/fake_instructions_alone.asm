@@ -62,6 +62,8 @@
     and (sp)
     and ($12)
     and ($0012)
+    and (0x12)
+    and (0x0012)
     and ($1234)
 
     cp f

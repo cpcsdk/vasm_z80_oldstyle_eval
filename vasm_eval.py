@@ -11,6 +11,7 @@ BUG does not work on windows
 # imports
 import glob
 import sys
+import os
 import subprocess
 
 # code
@@ -103,6 +104,21 @@ def __assemble(vasm, fname, success=True, content=None):
     stdout, stderr = process.communicate()
 
     if (success and 0==process.returncode) or (not success and 0!=process.returncode):
+        # If possible verify if binary matches
+        expected_file = fname[:-3]+"bin"
+        if success and os.path.exists(expected_file):
+           a = open('a.out', 'r')
+           current_binary = a.read(-1)
+           a.close()
+           b = open(expected_file)
+           expected_binary = b.read(-1)
+           b.close()
+
+           if current_binary != expected_binary:
+                sys.stdout.write('*')
+                errors.append( (success, fname, "Binary does not match expected in %s" % expected_file ) )
+                return 0
+
         sys.stdout.write('.')
         return 1
     else:
