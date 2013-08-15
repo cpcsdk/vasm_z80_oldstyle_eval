@@ -47,7 +47,7 @@ def verify_equality(vasm, fname):
 
         # launch line compilation
         if not __assemble(vasm, fnamed, True, current_line[:-1]):
-            raise "WRONG test file" + fname
+            raise Exception("WRONG test file" + fname + " / not assembling")
 
         # Read the binary
         with open('a.out', 'r') as a:
@@ -103,9 +103,11 @@ def __assemble(vasm, fname, success=True, content=None):
     process = subprocess.Popen([vasm, '-Fbin', fname], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = process.communicate()
 
+    expected_file = fname[:-3]+"bin"
+    if os.path.exists(expected_file):
+        sys.stdout.write('[bin] ')
     if (success and 0==process.returncode) or (not success and 0!=process.returncode):
         # If possible verify if binary matches
-        expected_file = fname[:-3]+"bin"
         if success and os.path.exists(expected_file):
            a = open('a.out', 'r')
            current_binary = a.read(-1)

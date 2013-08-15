@@ -1,15 +1,28 @@
 Launch tests on:
-[G] ./good/all.asm .
+[G] ./good/all.asm [bin] .
+[G] ./good/bitwise_operations.asm [bin] *
 [G] ./good/high.asm *
+[G] ./good/high2.asm [bin] *
 [G] ./good/struct.asm .
-[B] ./bad/fake_instructions_alone.asm ......**.*..*..........................................**.....................................
-[B] ./bad/ixiy_alone.asm ................****
+[B] ./bad/fake_instructions_alone.asm ................................................................................................
+[B] ./bad/fake_instructions_alone_subset.asm .
+[B] ./bad/ixiy_alone.asm ....................
 [B] ./bad/sixteenbitop_alone.asm ...............................................
 [E] ./equiv/indir.asm ..o..o..o..o..o..o..o..o..o..o
 
-Summary: 163/174 successes of tests.
+Summary: 176/179 successes of tests.
 
 List of errors:
+>> Source: ./good/bitwise_operations.asm
+	Failed instead of succeeded
+	Message: 
+error 2004 in line 1 of "./good/bitwise_operations.asm": out of range for 8 bit expression (-253)
+>    ld a, ~ %11111100
+
+error 2004 in line 2 of "./good/bitwise_operations.asm": out of range for 8 bit expression (-253)
+>    ld (hl), ~ %11111100 
+
+
 >> Source: ./good/high.asm
 	Failed instead of succeeded
 	Message: 
@@ -20,32 +33,6 @@ error 48 in line 34 of "./good/high.asm": assertion "PFO100_try2+NBR_REG  == 0x1
 >    assert PFO100_try2+NBR_REG  == 0x12+13
 
 
->> Source:     ld (hl),($10)
-	Succeeded instead of failed
-
->> Source:     ld (hl),($1000)
-	Succeeded instead of failed
-
->> Source:     ld ($10),(hl)
-	Succeeded instead of failed
-
->> Source:     ld (ix + 0),($10)
-	Succeeded instead of failed
-
->> Source:     and ($12)
-	Succeeded instead of failed
-
->> Source:     and ($0012)
-	Succeeded instead of failed
-
->> Source:     ld ixh, (hl)
-	Succeeded instead of failed
-
->> Source:     ld ixl, (hl)
-	Succeeded instead of failed
-
->> Source:     ld iyh, (hl)
-	Succeeded instead of failed
-
->> Source:     ld iyl, (hl)
-	Succeeded instead of failed
+>> Source: ./good/high2.asm
+	Failed instead of succeeded
+	Message: Binary does not match expected in ./good/high2.bin
