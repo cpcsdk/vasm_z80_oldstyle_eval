@@ -1,16 +1,16 @@
 Launch tests on:
 [G] ./good/all.asm [bin] .
 [G] ./good/bitwise_operations.asm [bin] *
+[G] ./good/conditional_org.asm [bin] *
 [G] ./good/high.asm *
 [G] ./good/high2.asm [bin] *
 [G] ./good/struct.asm .
 [B] ./bad/fake_instructions_alone.asm ................................................................................................
-[B] ./bad/fake_instructions_alone_subset.asm .
 [B] ./bad/ixiy_alone.asm ....................
 [B] ./bad/sixteenbitop_alone.asm ...............................................
 [E] ./equiv/indir.asm ..o..o..o..o..o..o..o..o..o..o
 
-Summary: 176/179 successes of tests.
+Summary: 175/179 successes of tests.
 
 List of errors:
 >> Source: ./good/bitwise_operations.asm
@@ -23,9 +23,16 @@ error 2004 in line 2 of "./good/bitwise_operations.asm": out of range for 8 bit 
 >    ld (hl), ~ %11111100 
 
 
+>> Source: ./good/conditional_org.asm
+	Failed instead of succeeded
+	Message: Binary does not match expected in ./good/conditional_org.bin
+
 >> Source: ./good/high.asm
 	Failed instead of succeeded
 	Message: 
+error 2004 in line 25 of "./good/high.asm": out of range for 8 bit expression (4673)
+>    CP PFO100_try2+NBR_REG      ; must be 0x12+13
+
 error 48 in line 31 of "./good/high.asm": assertion "PFO100_try2 == 0x12" failed: 
 >    assert PFO100_try2 == 0x12
 
@@ -35,4 +42,7 @@ error 48 in line 34 of "./good/high.asm": assertion "PFO100_try2+NBR_REG  == 0x1
 
 >> Source: ./good/high2.asm
 	Failed instead of succeeded
-	Message: Binary does not match expected in ./good/high2.bin
+	Message: 
+error 2004 in line 15 of "./good/high2.asm": out of range for 8 bit expression (4673)
+>    CP PFO100_try2+NBR_REG      ; must be 0x12+13
+
