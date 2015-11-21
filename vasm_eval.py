@@ -118,7 +118,10 @@ def __assemble(vasm, fname, success=True, content=None):
 
            if current_binary != expected_binary:
                 sys.stdout.write('*')
-                errors.append( (success, fname, "Binary does not match expected in %s" % expected_file ) )
+                error_message = "Binary does not match expected in %s" % expected_file 
+                error_message += " \n Expected: " + ",".join("0x%0.2X" % ord(_) for _ in expected_binary)
+                error_message += " \n Obtained: " + ",".join("0x%0.2X" % ord(_) for _ in current_binary)
+                errors.append( (success, fname, error_message) )
                 return 0
 
         sys.stdout.write('.')
