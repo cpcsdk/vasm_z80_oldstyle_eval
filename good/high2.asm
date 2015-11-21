@@ -1,7 +1,6 @@
 ; Same source than high, without the assertions
 ; in order to check if binaries could be ok
 
-LIST
   org 0x1234
 
 
