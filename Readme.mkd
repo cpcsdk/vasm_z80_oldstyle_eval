@@ -16,5 +16,15 @@ The script read source files from these folders:
 If the name of one asm file contains the string *_alone*, the each line is assembled individually instead of assembling the file as a whole.
 
 
+In order to launch the tests on the official vasm version, uses:
+```bash
+make test_public
+```
+
+In order to launch the tests on your own version, uses:
+```bash
+VASM=<path_to_vasm> make test_perso
+```
+
 Feel free to add extra test cases, and to patch [vasm](http://sun.hasenbraten.de/vasm/).
 There are no modifications to do if you want to test other flavors of vasm.
