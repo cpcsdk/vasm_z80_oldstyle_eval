@@ -139,10 +139,17 @@ def __assemble(vasm, fname, success=True, content=None):
 def main():
     """Launch all the tests"""
 
-    try:
+    if len(sys.argv) == 2:
         vasm = sys.argv[1]
-    except:
-        vasm = '../vasm/vasmz80_oldstyle'
+    else:
+        if 'VASM' not in os.environ:
+            sys.stderr.write("[ERROR] VASM variable not defined\n")
+            exit(-1)
+        vasm = os.environ['VASM']
+
+    if not os.path.exists(vasm):
+        sys.stderr.write("[ERROR] vasm executable not found: %s.\n" % vasm)
+        exit(-1)
 
     successes = []
 
