@@ -1,20 +1,32 @@
 .PHONY: test_perso  test_public
-ALL: test_public
+ALL: test_daily
 
 # Launch the test with the vasm version of my machine
 test_perso:
 	python vasm_eval.py 
 
 # Launch the test with the public version of vasm
-test_public:
+test_daily:
+	$(MAKE) __test__really__ VASM_URL=http://sun.hasenbraten.de/vasm/daily/vasm.tar.gz 
+
+
+# Launch the test with a specific version
+test_version_1.7c:
+	$(MAKE) __test__really__ VASM_URL=http://server.owl.de/~frank/tags/vasm1_7c.tar.gz
+
+test_version_1.7b:
+	$(MAKE) __test__really__ VASM_URL=http://server.owl.de/~frank/tags/vasm1_7b.tar.gz
+
+
+
+__test__really__:
 	-rm -rf vasm
-	wget http://sun.hasenbraten.de/vasm/daily/vasm.tar.gz -O vasm.tar.gz
+	wget $(VASM_URL) -O vasm.tar.gz
 	tar -xvzf vasm.tar.gz
 	rm vasm.tar.gz
 	cd vasm && make CPU=z80 SYNTAX=oldstyle
 	python vasm_eval.py vasm/vasmz80_oldstyle | tee current_state.txt
 	rm -rf vasm
-
 
 update_current_state:
 	$(MAKE) test_public
