@@ -1,0 +1,3 @@
+[submodule "thirdparties/vasmz80_testcases"]
+	path = thirdparties/vasmz80_testcases
+	url = git@github.com:suborb/vasmz80_testcases.git
