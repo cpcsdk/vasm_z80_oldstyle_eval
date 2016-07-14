@@ -32,3 +32,14 @@ update_current_state:
 	$(MAKE) test_public
 	git add current_state.txt
 	-git commit -m "Update log results with current vasm version"
+
+
+
+THIRD_PARTIES_FILES_GOOD=thirdparties/vasmz80_testcases/z80validopcodes.asm 
+include_third_parties:
+	cd 
+	for file in $(THIRD_PARTIES_FILES); \
+		do \
+		cat $$file | sed -e 's/\.section/section/' > good/$$(basename $$file) ; \
+		cp $$(dirname $$file)/$$(basename -s 'asm' $$file).bin 
+

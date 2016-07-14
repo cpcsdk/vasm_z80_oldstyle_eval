@@ -150,6 +150,8 @@ def main():
     if not os.path.exists(vasm):
         sys.stderr.write("[ERROR] vasm executable not found: %s.\n" % vasm)
         exit(-1)
+    else:
+        sys.stdout.write("Select %s\n" % vasm)
 
     successes = []
 
