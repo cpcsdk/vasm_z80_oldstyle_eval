@@ -1,3 +1,4 @@
+Select vasm/vasmz80_oldstyle
 Launch tests on:
 [G] ./good/all.asm [bin] .
 [G] ./good/bitwise_operations.asm [bin] *
@@ -8,7 +9,7 @@ Launch tests on:
 [G] ./good/high2.asm [bin] *
 [G] ./good/high3.asm [bin] *
 [G] ./good/macro1.asm .
-[G] ./good/macro2.asm .
+[G] ./good/macro2.asm *
 [G] ./good/real_world_appack.asm .
 [G] ./good/struct.asm .
 [B] ./bad/defs.asm *
@@ -20,7 +21,7 @@ Launch tests on:
 [E] ./equiv/indir.asm ..o..o..o..o..o..o..o..o..o..o
 [E] ./equiv/test_suite.asm ..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o
 
-Summary: 338/345 successes of tests.
+Summary: 337/345 successes of tests.
 
 List of errors:
 >> Source: ./good/bitwise_operations.asm
@@ -70,6 +71,43 @@ error 2004 in line 14 of "./good/high2.asm": out of range for 8 bit expression (
 	Message: Binary does not match expected in ./good/high3.bin 
  Expected: 0x3E,0x12,0x3E,0x12,0x3E,0x12,0x3E,0x12 
  Obtained: 0x3E,0x12,0x3E,0x00,0x3E,0x00,0x3E,0x12
+
+>> Source: ./good/macro2.asm
+	Failed instead of succeeded
+	Message: 
+error 1011 in line 5 of "VSCROLL_BUILD_DATA_LINE": identifier expected
+	called from line 25 of "./good/macro2.asm"
+>\@_shifted
+
+warning 6 in line 8 of "VSCROLL_BUILD_DATA_LINE": symbol <_000001> redefined
+	called from line 25 of "./good/macro2.asm"
+>\@_not_shifted
+
+error 1011 in line 8 of "VSCROLL_BUILD_DATA_LINE": identifier expected
+	called from line 25 of "./good/macro2.asm"
+>\@_not_shifted
+
+warning 6 in line 11 of "VSCROLL_BUILD_DATA_LINE": symbol <_000001> redefined
+	called from line 25 of "./good/macro2.asm"
+>\@_next2
+
+error 1011 in line 11 of "VSCROLL_BUILD_DATA_LINE": identifier expected
+	called from line 25 of "./good/macro2.asm"
+>\@_next2
+
+error 1011 in line 5 of "VSCROLL_BUILD_DATA_LINE": identifier expected
+	called from line 26 of "./good/macro2.asm"
+>\@_shifted
+
+warning 6 in line 8 of "VSCROLL_BUILD_DATA_LINE": symbol <_000002> redefined
+	called from line 26 of "./good/macro2.asm"
+>\@_not_shifted
+
+error 1011 in line 8 of "VSCROLL_BUILD_DATA_LINE": identifier expected
+	called from line 26 of "./good/macro2.asm"
+>\@_not_shifted
+***maximum number of errors reached!***
+
 
 >> Source: ./bad/defs.asm
 	Succeeded instead of failed
