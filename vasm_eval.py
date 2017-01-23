@@ -139,13 +139,15 @@ def __assemble(vasm, fname, success=True, content=None):
 def main():
     """Launch all the tests"""
 
-    if len(sys.argv) == 2:
+    if len(sys.argv) >= 2:
         vasm = sys.argv[1]
     else:
         if 'VASM' not in os.environ:
             sys.stderr.write("[ERROR] VASM variable not defined\n")
             exit(-1)
         vasm = os.environ['VASM']
+
+
 
     if not os.path.exists(vasm):
         sys.stderr.write("[ERROR] vasm executable not found: %s.\n" % vasm)
@@ -155,9 +157,23 @@ def main():
 
     successes = []
 
-    good_files = sorted(glob.glob('./good/*.asm'))
-    bad_files = sorted(glob.glob('./bad/*.asm'))
-    equiv_files = sorted(glob.glob('./equiv/*.asm'))
+    if len(sys.argv) == 3:
+	pattern = sys.argv[2]
+        good_files = []
+        bad_files = []
+        equiv_files = []
+
+        for fname in sorted(glob.glob(pattern)):
+	    if fname.find("good/") != -1:
+	        good_files.append(fname)
+	    elif fname.find("bad/") != -1:
+	        bad_files.append(fname)
+	    elif fname.find("equiv/") != -1:
+	        equiv_files.append(fname)
+    else:
+        good_files = sorted(glob.glob('./good/*.asm'))
+        bad_files = sorted(glob.glob('./bad/*.asm'))
+        equiv_files = sorted(glob.glob('./equiv/*.asm'))
 
     sys.stdout.write('Launch tests on:')
     for fname in good_files:
