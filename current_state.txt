@@ -1,27 +1,32 @@
 Select vasm/vasmz80_oldstyle
 Launch tests on:
+[G] ./good/ArkosTrackerPlayer_CPC_MSX.asm .
 [G] ./good/all.asm [bin] .
 [G] ./good/bitwise_operations.asm [bin] *
 [G] ./good/conditional_org.asm [bin] *
-[G] ./good/delimited.asm [bin] *
+[G] ./good/delimited.asm [bin] .
 [G] ./good/delimited2.asm .
 [G] ./good/high.asm *
 [G] ./good/high2.asm [bin] *
 [G] ./good/high3.asm [bin] *
 [G] ./good/macro1.asm .
-[G] ./good/macro2.asm *
+[G] ./good/macro2.asm .
 [G] ./good/real_world_appack.asm .
+[G] ./good/repeat.asm *
+[G] ./good/repeat2.asm *
 [G] ./good/struct.asm .
-[B] ./bad/defs.asm *
+[G] ./good/testcrtc.asm .
+[B] ./bad/defs.asm .
 [B] ./bad/fake_instructions_alone.asm ................................................................................................
 [B] ./bad/ixiy_alone.asm ....................
 [B] ./bad/jrrange.asm .
+[B] ./bad/local_label1.asm .
 [B] ./bad/sixteenbitop_alone.asm ...............................................
 [E] ./equiv/hexa.asm ..o
 [E] ./equiv/indir.asm ..o..o..o..o..o..o..o..o..o..o
 [E] ./equiv/test_suite.asm ..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o
 
-Summary: 337/345 successes of tests.
+Summary: 343/350 successes of tests.
 
 List of errors:
 >> Source: ./good/bitwise_operations.asm
@@ -39,12 +44,6 @@ error 2004 in line 2 of "./good/bitwise_operations.asm": out of range for 8 bit 
 	Message: Binary does not match expected in ./good/conditional_org.bin 
  Expected: 0xC3,0x00,0x2D,0xC3,0x03,0x2D 
  Obtained: 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xC3,0x10,0x00,0xC3,0x13,0x00
-
->> Source: ./good/delimited.asm
-	Failed instead of succeeded
-	Message: Binary does not match expected in ./good/delimited.bin 
- Expected: 0x0A,0x14,0x1E,0x28,0x68,0x65,0x6C,0x6C,0x6F,0x3A,0x20,0x77,0x6F,0x72,0x6C,0x64,0x68,0x65,0x6C,0x6C,0x6F,0x77,0x6F,0x72,0x6C,0x64,0x00,0x00 
- Obtained: 0x0A,0x28,0x68,0x65,0x6C,0x6C,0x6F,0x3A,0x20,0x77,0x6F,0x72,0x6C,0x64,0x68,0x65,0x6C,0x6C,0x6F,0x00,0x00
 
 >> Source: ./good/high.asm
 	Failed instead of succeeded
@@ -72,42 +71,18 @@ error 2004 in line 14 of "./good/high2.asm": out of range for 8 bit expression (
  Expected: 0x3E,0x12,0x3E,0x12,0x3E,0x12,0x3E,0x12 
  Obtained: 0x3E,0x12,0x3E,0x00,0x3E,0x00,0x3E,0x12
 
->> Source: ./good/macro2.asm
+>> Source: ./good/repeat.asm
 	Failed instead of succeeded
 	Message: 
-error 1011 in line 5 of "VSCROLL_BUILD_DATA_LINE": identifier expected
-	called from line 25 of "./good/macro2.asm"
->\@_shifted
-
-warning 6 in line 8 of "VSCROLL_BUILD_DATA_LINE": symbol <_000001> redefined
-	called from line 25 of "./good/macro2.asm"
->\@_not_shifted
-
-error 1011 in line 8 of "VSCROLL_BUILD_DATA_LINE": identifier expected
-	called from line 25 of "./good/macro2.asm"
->\@_not_shifted
-
-warning 6 in line 11 of "VSCROLL_BUILD_DATA_LINE": symbol <_000001> redefined
-	called from line 25 of "./good/macro2.asm"
->\@_next2
-
-error 1011 in line 11 of "VSCROLL_BUILD_DATA_LINE": identifier expected
-	called from line 25 of "./good/macro2.asm"
->\@_next2
-
-error 1011 in line 5 of "VSCROLL_BUILD_DATA_LINE": identifier expected
-	called from line 26 of "./good/macro2.asm"
->\@_shifted
-
-warning 6 in line 8 of "VSCROLL_BUILD_DATA_LINE": symbol <_000002> redefined
-	called from line 26 of "./good/macro2.asm"
->\@_not_shifted
-
-error 1011 in line 8 of "VSCROLL_BUILD_DATA_LINE": identifier expected
-	called from line 26 of "./good/macro2.asm"
->\@_not_shifted
-***maximum number of errors reached!***
+fatal error 33 in line 13 of "./good/repeat.asm": missing end directive in repeat-block
+>    
+aborting...
 
 
->> Source: ./bad/defs.asm
-	Succeeded instead of failed
+>> Source: ./good/repeat2.asm
+	Failed instead of succeeded
+	Message: 
+fatal error 33 in line 13 of "./good/repeat2.asm": missing end directive in repeat-block
+>    
+aborting...
+
