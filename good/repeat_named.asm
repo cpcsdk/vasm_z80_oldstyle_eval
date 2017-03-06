@@ -1,5 +1,6 @@
 
 
+    org 0
 
     ; standard repeat
     repeat 50 , "variable"
@@ -13,3 +14,6 @@
             db X, Y
         endrepeat
     endrepeat
+
+
+
