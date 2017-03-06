@@ -9,7 +9,7 @@ def save(fname, data):
         for byte in data:
             f.write(chr(byte))
 
-def produce_good_named():
+def produce_good_repeat_named():
     res = []
     for i in range(50):
         res.append(i)
@@ -21,10 +21,20 @@ def produce_good_named():
 
     save("good/repeat_named.bin", res)
 
+def produce_good_repeat():
+    res = []
+
+    for Y in range(16):
+        for X in range(16):
+            res.append(X*Y)
+
+    save("good/repeat.bin", res)
+
 
 def main():
-    produce_good_named()
+    produce_good_repeat_named()
+    produce_good_repeat()
 
 
 if __name__ == "__main__":
-    produce_good_named()
+    main()

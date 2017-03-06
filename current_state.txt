@@ -12,8 +12,10 @@ Launch tests on:
 [G] ./good/macro1.asm .
 [G] ./good/macro2.asm .
 [G] ./good/real_world_appack.asm .
-[G] ./good/repeat.asm *
-[G] ./good/repeat2.asm *
+[G] ./good/repeat.asm [bin] .
+[G] ./good/repeat2.asm .
+[G] ./good/repeat_named.asm [bin] *
+[G] ./good/repeat_named2.asm *
 [G] ./good/struct.asm .
 [G] ./good/testcrtc.asm .
 [B] ./bad/defs.asm .
@@ -21,12 +23,13 @@ Launch tests on:
 [B] ./bad/ixiy_alone.asm ....................
 [B] ./bad/jrrange.asm .
 [B] ./bad/local_label1.asm .
+[B] ./bad/repeat.asm .
 [B] ./bad/sixteenbitop_alone.asm ...............................................
 [E] ./equiv/hexa.asm ..o
 [E] ./equiv/indir.asm ..o..o..o..o..o..o..o..o..o..o
 [E] ./equiv/test_suite.asm ..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o..o
 
-Summary: 343/350 successes of tests.
+Summary: 346/353 successes of tests.
 
 List of errors:
 >> Source: ./good/bitwise_operations.asm
@@ -71,18 +74,64 @@ error 2004 in line 14 of "./good/high2.asm": out of range for 8 bit expression (
  Expected: 0x3E,0x12,0x3E,0x12,0x3E,0x12,0x3E,0x12 
  Obtained: 0x3E,0x12,0x3E,0x00,0x3E,0x00,0x3E,0x12
 
->> Source: ./good/repeat.asm
+>> Source: ./good/repeat_named.asm
 	Failed instead of succeeded
 	Message: 
-fatal error 33 in line 13 of "./good/repeat.asm": missing end directive in repeat-block
->    
-aborting...
+warning 1007 in line 6 of "./good/repeat_named.asm": garbage at end of line
+>    repeat 50 , "variable"
+
+warning 1007 in line 12 of "./good/repeat_named.asm": garbage at end of line
+>    repeat 10, Y
+
+warning 1007 in line 1 of "REPEAT:./good/repeat_named.asm:line 16": garbage at end of line
+	included from line 16 of "./good/repeat_named.asm"
+>        repeat 20, X
+
+error 3007: undefined symbol <Y>
+
+error 3007: undefined symbol <X>
+
+error 3007: undefined symbol <variable>
 
 
->> Source: ./good/repeat2.asm
+>> Source: ./good/repeat_named2.asm
 	Failed instead of succeeded
 	Message: 
-fatal error 33 in line 13 of "./good/repeat2.asm": missing end directive in repeat-block
->    
-aborting...
+warning 1007 in line 7 of "./good/repeat_named2.asm": garbage at end of line
+>    repeat 10, Y
+
+warning 1007 in line 1 of "REPEAT:./good/repeat_named2.asm:line 11": garbage at end of line
+	included from line 11 of "./good/repeat_named2.asm"
+>        repeat 20, X
+
+warning 1007 in line 14 of "./good/repeat_named2.asm": garbage at end of line
+>    repeat 10, Y
+
+warning 1007 in line 1 of "REPEAT:./good/repeat_named2.asm:line 18": garbage at end of line
+	included from line 18 of "./good/repeat_named2.asm"
+>        repeat 20, X
+
+error 2004 in line 3 of "./good/repeat_named2.asm": out of range for 8 bit expression (802)
+>    ld a, X
+
+error 2004 in line 1 of "REPEAT:REPEAT:./good/repeat_named2.asm:line 11:line 3": out of range for 8 bit expression (802)
+	included from line 3 of "REPEAT:./good/repeat_named2.asm:line 11"
+	included from line 11 of "./good/repeat_named2.asm"
+>            db X, Y
+
+error 2004 in line 1 of "REPEAT:REPEAT:./good/repeat_named2.asm:line 11:line 3": out of range for 8 bit expression (802)
+	included from line 3 of "REPEAT:./good/repeat_named2.asm:line 11"
+	included from line 11 of "./good/repeat_named2.asm"
+>            db X, Y
+
+error 2004 in line 1 of "REPEAT:REPEAT:./good/repeat_named2.asm:line 11:line 3": out of range for 8 bit expression (802)
+	included from line 3 of "REPEAT:./good/repeat_named2.asm:line 11"
+	included from line 11 of "./good/repeat_named2.asm"
+>            db X, Y
+
+error 2004 in line 1 of "REPEAT:REPEAT:./good/repeat_named2.asm:line 11:line 3": out of range for 8 bit expression (802)
+	included from line 3 of "REPEAT:./good/repeat_named2.asm:line 11"
+	included from line 11 of "./good/repeat_named2.asm"
+>            db X, Y
+***maximum number of errors reached!***
 

@@ -28,12 +28,12 @@ test_version_1.7b:
 
 __test__really__:
 	-rm -rf vasm 
-	wget $(VASM_URL) -O vasm.tar.gz 
-	tar -xzf vasm.tar.gz 
-	rm vasm.tar.gz 
-	cd vasm && make CPU=z80 SYNTAX=oldstyle -j $$(nproc) > /dev/null
+	@wget $(VASM_URL) -O vasm.tar.gz > /dev/null
+	@tar -xzf vasm.tar.gz  > /dev/null
+	@rm vasm.tar.gz  > /dev/null
+	@cd vasm && make CPU=z80 SYNTAX=oldstyle -j $$(nproc) > /dev/null
 	python vasm_eval.py vasm/vasmz80_oldstyle $(VASM_PATTERN) | tee current_state.txt
-	rm -rf vasm
+	@rm -rf vasm
 
 update_current_state:
 	$(MAKE) test_public
